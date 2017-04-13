@@ -6,6 +6,7 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsView>
 #include <QPlainTextEdit>
+#include "baseimage.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,7 +18,6 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-    void DisplayImg(QPixmap img);
     ~MainWindow();
 
 private slots:
@@ -32,8 +32,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
-    QPixmap baseImage;
-    QPixmap outputImage;
+    BaseImage *baseImg;
+    QPixmap *outputImage;
     QPlainTextEdit *csl;
 };
 

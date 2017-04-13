@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     scene = new QGraphicsScene(ui->BaseImageView);
     ui->ButtonProcess->setEnabled(false);
     ui->ConsoleOutpout->setVisible(false);
-
+    baseImg = new BaseImage;
     csl->insertPlainText(" Done\nWaiting for user based input...");
 
 }
@@ -36,10 +36,16 @@ void MainWindow::on_File_Open_triggered()
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
                                                     QDir::currentPath(),
                                                     tr("Images (*.jpeg *.jpg *.png)"));
-    if (!fileName.isNull()){
-            baseImage.load(fileName); // set the QPixmap
+
+    if (!fileName.isNull())
+    {
+        if (baseImg->loadFromPath("C:/Qt/Qt5.2.0/Tools/QtCreator/bin/build-ProjectCXX-Desktop_Qt_5_2_0_MSVC2010_32bit_OpenGL-Debug/Chrysanthemum.jpg")) // set the QPixmap
+        {
             csl->insertPlainText(" Done\nAdress: "+fileName);
-            DisplayImg(baseImage);} // Displaying
+            baseImg->DisplayImg(scene,ui->BaseImageView);
+        }
+        else csl->insertPlainText(" Error loading");
+    } // Displaying
     else
         csl->insertPlainText(" Operation canceled, no file selected");
 }
@@ -53,16 +59,6 @@ void MainWindow::on_ButtonDB_clicked()
             ui->ButtonProcess->setEnabled(true);
 }
 
-void MainWindow::DisplayImg(QPixmap img){
-    // Display the given Qpixmap igm by fitting it into the QGraphicsView while keeping the aspect ratio
-    csl->appendPlainText("Displaying...");
-
-    scene->addPixmap(img); // Add the QPixmap to the scene
-    ui->BaseImageView->setScene(scene); // Add the scene to the QGraphics view
-    ui->BaseImageView->fitInView(baseImage.rect(),Qt::KeepAspectRatio); // Fit with ratio keeping
-
-    csl->insertPlainText(" Done");
-}
 
 void MainWindow::on_VerboseCheck_clicked()
 {   // Display or not the verbose QPlainTextEdit according to the checkbox status
@@ -83,8 +79,11 @@ void MainWindow::on_File_Save_triggered()
                                  "",
                                  tr("Images (*.png)"));
     if (!fileName.isNull()){
-        outputImage.save(fileName, "png"); // Saving
+        outputImage=baseImg;
+        outputImage->save(fileName, "png"); // Saving
         csl->insertPlainText("File saved\nAdress: "+fileName);}
     else
         csl->insertPlainText("Operation canceled, no file selected");
 }
+
+
