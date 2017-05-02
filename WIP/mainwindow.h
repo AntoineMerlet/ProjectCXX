@@ -7,6 +7,7 @@
 #include <QGraphicsView>
 #include <QPlainTextEdit>
 #include "baseimage.h"
+#include "imagedb.h"
 
 namespace Ui {
 class MainWindow;
@@ -29,10 +30,13 @@ private slots:
 
     void on_File_Save_triggered();
 
+    void on_ButtonLower_clicked();
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     BaseImage *baseImg;
+    ImageDB *DB;
     QPixmap *outputImage;
     QPlainTextEdit *csl;
 };

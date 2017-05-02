@@ -95,6 +95,19 @@
      <bool>false</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="ButtonLower">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>420</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Lower Resolution</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

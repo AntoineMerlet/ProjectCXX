@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     baseimage.cpp \
-    outputimage.cpp
+    outputimage.cpp \
+    imagedb.cpp
 
 HEADERS  += mainwindow.h \
     baseimage.h \
-    outputimage.h
+    outputimage.h \
+    imagedb.h
 
 FORMS    += mainwindow.ui
 
