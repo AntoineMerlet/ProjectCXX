@@ -47,7 +47,7 @@ void MainWindow::on_File_Open_triggered()
     // checking that a file has been selected
     if (!fileName.isNull())
     {
-        if (baseImg->loadFromPath(fileName)) // set the QPixmap, checking the reeturn bool for success
+        if (baseImg->setImage(fileName)) // set the QPixmap, checking the reeturn bool for success
         {
             csl->insertPlainText(" Done\nAdress: "+fileName+"\n");
             baseImg->DisplayImg(scene,ui->BaseImageView);

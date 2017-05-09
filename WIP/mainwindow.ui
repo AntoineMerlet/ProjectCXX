@@ -33,6 +33,9 @@
       <height>111</height>
      </rect>
     </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
     <property name="readOnly">
      <bool>true</bool>
     </property>
