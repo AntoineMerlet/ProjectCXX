@@ -55,16 +55,14 @@ void ImageDB::buildDB(const int& size)
         // Get file name
         QString filePath = fileinfo.absoluteFilePath();
 
-        QImage *tmp= new QImage();
-        tmp->load(filePath);
+        QImage tmp(filePath);
 
         // Generate pixelized version
-        QImage *low = new QImage(tmp->scaled(size,size, Qt::KeepAspectRatio));
+        QImage *low = new QImage(tmp.scaled(size,size, Qt::KeepAspectRatio));
 
         // add data to vector
         data.push_back(low);
-        means.push_back(computeMean(tmp));
-        delete tmp;
+        means.push_back(computeMean(low));
     }
 
 
